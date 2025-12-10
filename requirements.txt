@@ -1,1 +1,6 @@
-
+fastapi
+uvicorn
+pyparsing
+pytest
+httpx
+coverage
