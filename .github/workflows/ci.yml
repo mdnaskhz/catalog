@@ -1,1 +1,24 @@
+name: CI
 
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          pip install pytest coverage
+
+      - name: Run tests
+        run: |
+          coverage run -m pytest
+          coverage report
